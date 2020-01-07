@@ -39,25 +39,36 @@ function getUserPosts(userId) {
  * Task 1: Send a login request for user1 -> get user profile data -> get user posts data
  */
 
-async function userDataSerial() {
-  console.time('userData-serial');
-  const userID = await sendUserLoginRequest('user1');
-  const profileData = await getUserProfile(userID);
-  console.log('Profile data', profileData);
-  const post = await getUserPosts(userID);
-  console.log('Post data', post);
-  console.timeEnd('userData-serial');
-}
+// async function userDataSerial() {
+//   console.time('userData-serial');
+//   const userID = await sendUserLoginRequest('user1');
+//   const profileData = await getUserProfile(userID);
+//   console.log('Profile data', profileData);
+//   const post = await getUserPosts(userID);
+//   console.log('Post data', post);
+//   console.timeEnd('userData-serial');
+// }
 
 /**
  * Task 2: Send a login request for user1 -> get user profile data and get user posts data simultaneously
  */
+async function parallelUserProfile(userID) {
+    const profile = await getUserProfile(userID);
+    return profile;
+}
+
+async function parallelUserPost(userID) {
+    const post = await getUserPosts(userID);
+    return post;
+
+}
 
 function userDataParallel() {
   console.time('userData-parallel');
-  // Write code here
+  const profileData = parallelUserProfile('user1');
+  const postsData = parallelUserPost('user1');
   console.timeEnd('userData-parallel');
 }
 
-userDataSerial();
+// userDataSerial();
 userDataParallel();
