@@ -143,24 +143,36 @@ function getCards(listId) {
 //   });
 
 
-const task2 = getBoard()
+// const task2 = getBoard()
+//   .then((board) => {
+//     getLists(board.id)
+//       .then((list) => {
+//       // console.log('list', list);
+//       console.log('\n Task 2');
+//         getCards(list[0].id)
+//           .then((cards) => {
+//             console.log('list', list[0]);
+//             console.log(cards);
+//           });
+//         getCards(list[1].id)
+//           .then((cards) => {
+//             console.log('list', list[1]);
+//             console.log(cards);
+//           });
+//       });
+//   });
+
+const task3 = getBoard()
   .then((board) => {
     getLists(board.id)
       .then((list) => {
-      // console.log('list', list);
-      console.log('\n Task 2');
-        getCards(list[0].id)
-          .then((cards) => {
-            console.log('list', list[0]);
+        
+        list.forEach((singleList) => {
+          console.log('list', singleList);
+          getCards(singleList.id).then((cards) => {
             console.log(cards);
           });
-        getCards(list[1].id)
-          .then((cards) => {
-            console.log('list', list[1]);
-            console.log(cards);
-          });
+        });
       });
   });
-
-
 
