@@ -12,12 +12,17 @@ function getBoard(callback) {
 }
 
 function takeBoardId(board) {
-  getLists(board.id, takeAllListIds);
+  getLists(board.id, takeTwoListIds);
 }
 
 // function takeListId(listId) {
 //   getCards(listId[0].id, console.log);
 // }
+
+function takeTwoListIds(listId) {
+  getCards(listId[0].id, console.log);
+  getCards(listId[1].id, console.log);
+}
 
 function takeAllListIds(listIds) {
   listIds.forEach((list) => {
